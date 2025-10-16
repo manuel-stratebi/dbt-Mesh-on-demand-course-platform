@@ -1,0 +1,78 @@
+models:
+- name: fct_orders
+  description: This model provides a detailed view of orders, including customer and
+    location information, as well as order-specific details such as total amount and
+    tax paid. It also extracts date components from the order timestamp for further
+    analysis.
+  config:
+    contract:
+      enforced: true
+  columns:
+    - name: order_id
+      description: A unique identifier for each order.
+      data_type: varchar
+      constraints:
+        - type: not_null
+        - type: unique
+
+    - name: location_id
+      description: A unique identifier for the location where the order was placed.
+      data_type: varchar
+      constraints:
+        - type: not_null
+
+    - name: customer_id
+      description: A unique identifier for the customer who placed the order.
+      data_type: varchar
+      constraints:
+        - type: not_null
+
+    - name: order_total
+      description: The total amount of the order, including all items purchased.
+      data_type: numeric
+      constraints:
+        - type: not_null
+        - type: check
+          expression: "order_total >= 0"
+
+    - name: tax_paid
+      description: The amount of tax paid for the order.
+      data_type: numeric
+      constraints:
+        - type: not_null
+        - type: check
+          expression: "tax_paid >= 0"
+
+    - name: ordered_at
+      description: The timestamp when the order was placed.
+      data_type: timestamp
+      constraints:
+        - type: not_null
+
+    - name: customer_name
+      description: The name of the customer who placed the order.
+      data_type: string
+
+    - name: location_name
+      description: The name of the location where the order was placed.
+      data_type: string
+
+    - name: tax_rate
+      description: The tax rate applied to the order.
+      data_type: numeric
+
+    - name: location_opened_at
+      description: The timestamp when the location was opened.
+      data_type: timestamp
+
+    - name: ordered_month
+      description: The month when the order was placed, extracted from the ordered_at timestamp.
+      data_type: integer
+
+    - name: ordered_day
+      description: The day when the order was placed, extracted from the ordered_at timestamp.
+      data_type: integer
+
+    - name: ordered_year
+      description: The year when the order was placed, extracted from the ordered_at timestamp.
+      data_type: integer
