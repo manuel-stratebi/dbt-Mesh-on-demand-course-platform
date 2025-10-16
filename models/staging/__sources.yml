@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: jaffle_shop
-    database: raw
-    schema: jaffle_shop
+    database: MANUELJOSE_TORNERO_DB
+    schema: mesh_jaffle_shop
     description: E-commerce data
     tables:
       - name: customers
