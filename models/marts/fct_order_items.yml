@@ -1,0 +1,34 @@
+models:
+- name: fct_order_items
+  description: This model consolidates order and order item details, providing a comprehensive
+    view of each order including customer and location information. It is useful for
+    analyzing sales, customer behavior, and location performance.
+  config:
+    contract:
+      enforced: true
+  columns:
+      - name: order_item_id
+        data_type: varchar
+      - name: order_id
+        data_type: varchar
+      - name: product_id
+        data_type: varchar
+      - name: location_id
+        data_type: varchar
+      - name: customer_id
+        data_type: varchar
+      - name: order_total
+        data_type: number
+      - name: tax_paid
+        data_type: number
+      - name: ordered_at
+        data_type: timestamp_ntz
+      - name: customer_name
+        data_type: varchar
+      - name: location_name
+        data_type: varchar
+      - name: tax_rate
+        data_type: number
+      - name: location_opened_at
+        data_type: timestamp_ntz
+
